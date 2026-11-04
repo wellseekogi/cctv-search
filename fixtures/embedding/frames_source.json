@@ -1,0 +1,14 @@
+{
+  "frames": [
+    {
+      "timestamp_ms": 0,
+      "path": "frame_0.png",
+      "sha256": "3a2a0082e05cbe3fdb98d7d10b398994e046a6274ee3f99ab366326670ead080"
+    },
+    {
+      "timestamp_ms": 200,
+      "path": "frame_200.png",
+      "sha256": "ec2ca24c8b6b686967e57078d71433ad30c41c9b7c60c5f5c69a530702c60278"
+    }
+  ]
+}

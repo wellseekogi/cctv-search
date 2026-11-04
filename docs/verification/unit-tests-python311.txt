@@ -1,0 +1,37 @@
+test_b_returned_decode_error_preserves_code (test_embedding.EmbeddingTests.test_b_returned_decode_error_preserves_code) ... ok
+test_cache_hit_skips_encoding (test_embedding.EmbeddingTests.test_cache_hit_skips_encoding) ... ok
+test_corrupt_cache_regenerates (test_embedding.EmbeddingTests.test_corrupt_cache_regenerates) ... ok
+test_crop_all_edges_and_single_pixel (test_embedding.EmbeddingTests.test_crop_all_edges_and_single_pixel) ... ok
+test_crop_fractional_floor_ceil_margin (test_embedding.EmbeddingTests.test_crop_fractional_floor_ceil_margin) ... ok
+test_crop_rejects_invalid_box (test_embedding.EmbeddingTests.test_crop_rejects_invalid_box) ... ok
+test_dev_and_eval_cannot_share_bundle (test_embedding.EmbeddingTests.test_dev_and_eval_cannot_share_bundle) ... ok
+test_duplicate_id_rejected (test_embedding.EmbeddingTests.test_duplicate_id_rejected) ... ok
+test_empty_success_shape (test_embedding.EmbeddingTests.test_empty_success_shape) ... ok
+test_failed_item_skipped_no_row_holes (test_embedding.EmbeddingTests.test_failed_item_skipped_no_row_holes) ... ok
+test_frame_mismatch_rejected_even_within_100ms (test_embedding.EmbeddingTests.test_frame_mismatch_rejected_even_within_100ms) ... ok
+test_generic_encoding_error_isolated_and_retried (test_embedding.EmbeddingTests.test_generic_encoding_error_isolated_and_retried) ... ok
+test_hash_list_cannot_omit_vectors (test_embedding.EmbeddingTests.test_hash_list_cannot_omit_vectors) ... ok
+test_invalid_vectors_are_excluded (test_embedding.EmbeddingTests.test_invalid_vectors_are_excluded) ... ok
+test_margin_and_decoder_invalidate_images (test_embedding.EmbeddingTests.test_margin_and_decoder_invalidate_images) ... ok
+test_media_tampering_detected (test_embedding.EmbeddingTests.test_media_tampering_detected) ... ok
+test_model_and_preprocess_invalidate_vectors (test_embedding.EmbeddingTests.test_model_and_preprocess_invalidate_vectors) ... ok
+test_nonobject_jsonl_row_rejected (test_embedding.EmbeddingTests.test_nonobject_jsonl_row_rejected) ... ok
+test_oom_sequence_and_recovery (test_embedding.EmbeddingTests.test_oom_sequence_and_recovery) ... ok
+test_oom_singleton_retries_once_at_batch_one (test_embedding.EmbeddingTests.test_oom_singleton_retries_once_at_batch_one) ... ok
+test_path_escape_rejected (test_embedding.EmbeddingTests.test_path_escape_rejected) ... ok
+test_published_index_tampering_detected (test_embedding.EmbeddingTests.test_published_index_tampering_detected) ... ok
+test_query_device_may_differ_without_changing_model (test_embedding.EmbeddingTests.test_query_device_may_differ_without_changing_model) ... ok
+test_query_encoder_mismatch_detected (test_embedding.EmbeddingTests.test_query_encoder_mismatch_detected) ... ok
+test_refuses_existing_output (test_embedding.EmbeddingTests.test_refuses_existing_output) ... ok
+test_retry_transient_decode_and_record_recovery (test_embedding.EmbeddingTests.test_retry_transient_decode_and_record_recovery) ... ok
+test_rgb_contract_rejects_float_image (test_embedding.EmbeddingTests.test_rgb_contract_rejects_float_image) ... ok
+test_size_and_offset_mismatches_rejected (test_embedding.EmbeddingTests.test_size_and_offset_mismatches_rejected) ... ok
+test_sorted_rows_original_bbox_media_and_unit_vectors (test_embedding.EmbeddingTests.test_sorted_rows_original_bbox_media_and_unit_vectors) ... ok
+test_source_hash_mismatch_rejected_before_output (test_embedding.EmbeddingTests.test_source_hash_mismatch_rejected_before_output) ... ok
+test_time_range_is_half_open (test_embedding.EmbeddingTests.test_time_range_is_half_open) ... ok
+test_unknown_video_is_item_failure (test_embedding.EmbeddingTests.test_unknown_video_is_item_failure) ... ok
+
+----------------------------------------------------------------------
+Ran 32 tests in 1.986s
+
+OK

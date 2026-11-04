@@ -1,0 +1,20 @@
+clip @ https://github.com/openai/CLIP/archive/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6.zip#sha256=c665a33987c7365078c9988fdae5699026ec75cc4424bc0d59ab2599df22229a
+colorama==0.4.6
+filelock==4.2.4
+fsspec==2026.9.0
+ftfy==6.3.1
+Jinja2==3.1.6
+MarkupSafe==3.0.3
+mpmath==1.3.0
+networkx==3.6.1
+numpy==2.1.2
+packaging==26.3
+pillow==11.2.1
+PyYAML==6.0.2
+regex==2024.11.6
+sympy==1.14.0
+torch==2.7.1+cpu
+torchvision==0.22.1+cpu
+tqdm==4.67.1
+typing_extensions==4.16.0
+wcwidth==0.2.13

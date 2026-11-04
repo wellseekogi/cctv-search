@@ -1,0 +1,11 @@
+# Install the hardware-specific torch/torchvision wheels before this file.
+torch==2.7.1
+torchvision==0.22.1
+numpy==2.1.2
+Pillow==11.2.1
+PyYAML==6.0.2
+ftfy==6.3.1
+wcwidth==0.2.13
+regex==2024.11.6
+tqdm==4.67.1
+clip @ https://github.com/openai/CLIP/archive/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6.zip
