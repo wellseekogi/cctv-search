@@ -4,15 +4,13 @@ import json
 import sys
 from pathlib import Path
 
-import yaml
-
 from .contracts import SCHEMA, write_json, write_jsonl
-from .encoder import ClipEncoder, MODEL_ID, REVISION, WEIGHTS_SHA256
+from .config import create_encoder, load_config
 from .pipeline import build_index, validate_index
 
 
 def main():
-    parser = argparse.ArgumentParser(description="C 담당 이미지·CLIP 인덱스 생성")
+    parser = argparse.ArgumentParser(description="C 담당 이미지·임베딩 인덱스 생성")
     commands = parser.add_subparsers(dest="command", required=True)
     build = commands.add_parser("build")
     for name in ("samples", "manifest", "data-root", "output", "cache", "frame-reader", "decoder-id"):
@@ -39,13 +37,10 @@ def main():
             index = validate_index(args.run_dir)
             print(json.dumps({"status": "success", "row_count": index["row_count"]}))
             return 0
-        config = yaml.safe_load(Path(args.config).read_text(encoding="utf-8"))["embedding"]
-        if (config["model_id"], config["model_revision"], config["weights_sha256"], config["embedding_dim"]) != (
-                MODEL_ID, REVISION, WEIGHTS_SHA256, 512) or config["normalize"] is not True:
-            raise ValueError("Unsupported model identity or normalization; update code and config together")
+        config = load_config(args.config)
         module, name = args.frame_reader.split(":", 1)
         reader = getattr(importlib.import_module(module), name)
-        encoder = ClipEncoder(config["model_root"], config["device"])
+        encoder = create_encoder(config)
         status = build_index(args.samples, args.manifest, args.data_root, args.output, args.cache,
                              reader, encoder, args.decoder_id, config["crop_margin_ratio"],
                              config["batch_size_gpu"] if encoder.device.startswith("cuda") else config["batch_size_cpu"])

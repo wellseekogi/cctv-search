@@ -1,8 +1,14 @@
-.venv/
-.venv311/
+.venv*/
 __pycache__/
 *.pyc
 models/
 .cache/
 runs/
 configs/local.yaml
+source_hashes.json
+*.zip
+*.bundle
+.env
+.env.*
+*.safetensors
+*.pt

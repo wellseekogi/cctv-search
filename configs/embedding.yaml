@@ -1,12 +1,15 @@
 embedding:
-  model_alias: CLIP-ViT-B-32
-  model_id: openai/CLIP/ViT-B-32
-  model_revision: d05afc436d78f1c48dc0dbf8e5980a9d471f35f6
-  weights_sha256: 40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af
-  embedding_dim: 512
+  backend: siglip2
+  model_alias: SigLIP2-Base-Patch16-224
+  model_id: google/siglip2-base-patch16-224
+  model_revision: 75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2
+  weights_sha256: 612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b
+  embedding_dim: 768
+  text_max_length: 64
+  precision: auto
   crop_margin_ratio: 0.10
-  batch_size_gpu: 16
-  batch_size_cpu: 4
+  batch_size_gpu: 4
+  batch_size_cpu: 2
   normalize: true
   device: auto
-  model_root: models
+  model_root: models/siglip2-base-224
