@@ -1,5 +1,16 @@
 # CCTV 검색 C 담당 구현
 
+## 팀원 공유와 브랜치 선택
+
+공개 저장소는 [wellseekogi/cctv-search](https://github.com/wellseekogi/cctv-search)입니다. 이 `main` 브랜치는 CLIP 기준선 코드입니다. 기존 작업은 `work/clip-baseline`, CLIP/SigLIP2 모델 실험과 최신 팀원용 설치 안내는 [feature/siglip2](https://github.com/wellseekogi/cctv-search/tree/feature/siglip2)에 있습니다.
+
+```powershell
+git clone --branch feature/siglip2 https://github.com/wellseekogi/cctv-search.git
+cd cctv-search
+```
+
+모델 가중치·가상환경·캐시·실행 결과는 Git에 포함하지 않습니다. 각 PC에서 설치하고 모델을 내려받습니다. 아래 내용은 CLIP 기준선의 실행 설명과 검증 기록입니다.
+
 최종 7인 실행명세서 v5.0(2026-11-02)의 C 범위를 구현했습니다. scene·object 이미지 생성, 공식 OpenAI CLIP ViT-B/32 이미지·텍스트 인코더, 캐시, 재시도, 인덱스 검증을 제공합니다. A의 선택 정책과 B의 영상 디코더는 각 담당자의 모듈을 연결합니다.
 
 ## 현재 PC에서 실행
