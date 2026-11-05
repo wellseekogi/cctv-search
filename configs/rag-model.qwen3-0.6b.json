@@ -1,0 +1,17 @@
+{
+  "model": {
+    "id": "Qwen/Qwen3-0.6B-GGUF",
+    "revision": "23749fefcc72300e3a2ad315e1317431b06b590a",
+    "filename": "Qwen3-0.6B-Q8_0.gguf",
+    "url": "https://huggingface.co/Qwen/Qwen3-0.6B-GGUF/resolve/23749fefcc72300e3a2ad315e1317431b06b590a/Qwen3-0.6B-Q8_0.gguf",
+    "sha256": "9465e63a22add5354d9bb4b99e90117043c7124007664907259bd16d043bb031",
+    "bytes": 639446688
+  },
+  "runtime": {
+    "tag": "b12125",
+    "filename": "llama-b12125-bin-win-cpu-x64.zip",
+    "url": "https://github.com/ggml-org/llama.cpp/releases/download/b12125/llama-b12125-bin-win-cpu-x64.zip",
+    "sha256": "968091ccb8c230e0cf7e0eed386310703bebae4a4fd4375f0c57db53958307d8",
+    "bytes": 24730921
+  }
+}

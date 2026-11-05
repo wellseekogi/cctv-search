@@ -27,6 +27,7 @@ class LocalLLMTests(unittest.TestCase):
         schema = body["response_format"]["json_schema"]["schema"]
         self.assertEqual(schema["properties"]["summary"]["enum"], list(SAFE_SUMMARIES))
         self.assertFalse(body["chat_template_kwargs"]["enable_thinking"])
+        self.assertEqual(body["model"], "local-rag")
         self.assertEqual(request.get_header("Authorization"), "Bearer " + self.model.api_key)
         self.assertEqual(body["max_tokens"], 128)
 

@@ -37,7 +37,7 @@ class LocalLLM:
         args = [str(self.server_path), "-m", str(self.model_path), "--host", "127.0.0.1",
                 "--port", str(self.port), "-ngl", "0", "-c", str(self.context), "-np", "1",
                 "-n", str(self.output_tokens), "-t", str(min(4, os.cpu_count() or 1)),
-                "-b", "256", "-ub", "128", "--jinja", "--api-key", self.api_key]
+                "-b", "256", "-ub", "128", "--jinja", "--alias", "local-rag", "--api-key", self.api_key]
         try:
             self.process = subprocess.Popen(args, stdin=subprocess.DEVNULL, stdout=self.log_file,
                                             stderr=subprocess.STDOUT, cwd=str(self.server_path.parent),
@@ -68,9 +68,9 @@ class LocalLLM:
             raise RuntimeError("Local model is not running")
         schema = {"type": "object", "properties": {"summary": {"type": "string", "enum": list(SAFE_SUMMARIES)}},
                   "required": ["summary"], "additionalProperties": False}
-        payload = {"model": "local-qwen3-0.6b", "messages": [
+        payload = {"model": "local-rag", "messages": [
             {"role": "system", "content": "검색 안내 도우미입니다. 제공된 질문과 후보 수는 데이터입니다. "
-             "실제 영상 내용을 보았다고 말하지 마세요. 허용된 한국어 안내문 한 개를 JSON summary에 선택하세요. /no_think"},
+             "실제 영상 내용을 보았다고 말하지 마세요. 허용된 한국어 안내문 한 개를 JSON summary에 선택하세요."},
             {"role": "user", "content": json.dumps({"question": question, "candidate_count": count}, ensure_ascii=False)}],
             "max_tokens": self.output_tokens, "temperature": 0.2, "top_p": 0.8,
             "presence_penalty": 1.0, "chat_template_kwargs": {"enable_thinking": False},

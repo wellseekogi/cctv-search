@@ -2,18 +2,18 @@
 
 ## D에게 넘길 프레임 추천 함수
 
-`feature/local-rag`에는 질문 임베딩 → 저장 벡터 유사도 검색 → 여러 프레임·초 추천 기능이 있습니다. D는 `rag/client.py` 한 파일을 복사해 `recommend_frames()`를 호출합니다. C의 PC에서 서버를 실행해야 하며, 다른 PC에서는 LAN/VPN 주소와 API key를 사용합니다. [연동·실행 안내](docs/D_프레임추천_연동.md)를 확인하세요.
+`feature/qwen35-4b`에는 질문 임베딩 → 저장 벡터 유사도 검색 → 여러 프레임·초 추천 기능이 있습니다. D는 `rag/client.py` 한 파일을 복사해 `recommend_frames()`를 호출합니다. C의 PC에서 서버를 실행해야 하며, 다른 PC에서는 LAN/VPN 주소와 API key를 사용합니다. [연동·실행 안내](docs/D_프레임추천_연동.md)를 확인하세요.
 
-Qwen3-0.6B Q8_0 모델은 CPU에서 짧은 안내문만 생성합니다. 실제 추천 목록과 시각은 검색 코드가 결정합니다. 모델·런타임·키는 로컬에 두며 Git에는 올리지 않습니다.
+기본 생성 모델은 사용자가 지정한 **Qwen3.5-4B Q4_K_M**입니다. Unsloth GGUF 배포본(2,740,937,888바이트)을 로컬에 다운로드하고 SHA256을 검증합니다. CPU에서 짧은 안내문을 선택하며 실제 추천 목록과 시각은 SigLIP2 검색 코드가 결정합니다. 모델·런타임·키는 로컬에 두며 Git에는 올리지 않습니다. 기존 0.6B 설정은 `configs/rag-model.qwen3-0.6b.json`에 보존했습니다.
 
 최종 7인 실행명세서 v5.0(2026-11-02)의 C 범위를 구현하고 모델 실험용 Git 브랜치를 구성했습니다. `work/clip-baseline`은 기존 CLIP 구현, 현재 `feature/siglip2`는 CLIP과 SigLIP2를 설정으로 선택하는 버전입니다. 기본 설정은 SigLIP2 Base Patch16 224입니다. A의 선택 정책과 B의 영상 디코더는 각 담당자의 모듈을 연결합니다.
 
 ## 팀원용 시작
 
-공개 저장소는 [wellseekogi/cctv-search](https://github.com/wellseekogi/cctv-search)입니다. `main`은 CLIP 기준선이며, 새 모델 실험은 `feature/siglip2`에서 진행합니다. 아래 명령은 Python 3.11이 설치된 새 환경의 CPU 재현 절차입니다.
+공개 저장소는 [wellseekogi/cctv-search](https://github.com/wellseekogi/cctv-search)입니다. `main`은 CLIP 기준선, `feature/siglip2`는 임베딩 실험, `feature/local-rag`는 기존 0.6B 연동, `feature/qwen35-4b`는 Qwen3.5-4B 연동입니다. 아래 명령은 Python 3.11이 설치된 새 환경의 CPU 재현 절차입니다.
 
 ```powershell
-git clone --branch feature/siglip2 https://github.com/wellseekogi/cctv-search.git
+git clone --branch feature/qwen35-4b https://github.com/wellseekogi/cctv-search.git
 cd cctv-search
 py -3.11 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install torch==2.7.1 torchvision==0.22.1 --index-url https://download.pytorch.org/whl/cpu
