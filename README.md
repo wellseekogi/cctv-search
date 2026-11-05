@@ -2,6 +2,22 @@
 
 최종 7인 실행명세서 v5.0(2026-11-02)의 C 범위를 구현하고 모델 실험용 Git 브랜치를 구성했습니다. `work/clip-baseline`은 기존 CLIP 구현, 현재 `feature/siglip2`는 CLIP과 SigLIP2를 설정으로 선택하는 버전입니다. 기본 설정은 SigLIP2 Base Patch16 224입니다. A의 선택 정책과 B의 영상 디코더는 각 담당자의 모듈을 연결합니다.
 
+## 팀원용 시작
+
+공개 저장소는 [wellseekogi/cctv-search](https://github.com/wellseekogi/cctv-search)입니다. `main`은 CLIP 기준선이며, 새 모델 실험은 `feature/siglip2`에서 진행합니다. 아래 명령은 Python 3.11이 설치된 새 환경의 CPU 재현 절차입니다.
+
+```powershell
+git clone --branch feature/siglip2 https://github.com/wellseekogi/cctv-search.git
+cd cctv-search
+py -3.11 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install torch==2.7.1 torchvision==0.22.1 --index-url https://download.pytorch.org/whl/cpu
+.\.venv\Scripts\python.exe -m pip install -r requirements-siglip2.txt
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+.\.venv\Scripts\python.exe -m tools.verify_embedding --config configs/embedding.siglip2.yaml --output runs/team-smoke-01
+```
+
+가중치는 저장소에 없으며 첫 모델 실행 시 해당 PC에 내려받고 SHA256을 검사합니다. 실행 결과 경로는 새 이름으로 지정합니다. CUDA 환경은 G가 확정한 GPU용 PyTorch를 설치한 뒤 같은 requirements를 사용합니다. 아래의 `.venv311`과 `.venv-siglip2` 경로는 작성자 PC의 기존 환경 이름입니다.
+
 ## 현재 PC에서 실행
 
 프로젝트 폴더 `C:\컴퓨터비전\cctv-search`에서 PowerShell을 엽니다. 준비된 Python 3.11 CPU 환경은 `.venv311`, Python 3.13 CUDA 환경은 `.venv-siglip2`입니다. 두 환경에 `requirements-siglip2.txt`를 설치했습니다.
