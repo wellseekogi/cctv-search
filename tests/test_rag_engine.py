@@ -10,7 +10,6 @@ from PIL import Image
 from embedding.contracts import SCHEMA, file_sha256, read_jsonl, write_json, write_jsonl
 from embedding.pipeline import build_index
 from rag.engine import FrameRecommender
-from rag.prompts import SAFE_SUMMARIES
 
 
 class _TinyEncoder:
@@ -219,12 +218,13 @@ class FrameRecommenderTests(unittest.TestCase):
 
     def test_llm_intro_cannot_change_authoritative_recommendations(self):
         llm = Mock()
-        llm.summarize.return_value = SAFE_SUMMARIES[0]
+        llm.summarize.return_value = "비슷한 장면이 여러 개 있어요. 어떤 후보를 먼저 확인해 볼까요?"
         engine = self.recommender(llm)
         expected = engine.recommend("자동차", use_llm=False)["recommendations"]
         actual = engine.recommend("자동차")
         self.assertEqual(actual["recommendations"], expected)
         self.assertEqual(actual["llm_status"], "generated")
+        self.assertEqual(actual["summary"], llm.summarize.return_value)
         llm.summarize.assert_called_once_with("자동차", len(expected))
 
     def test_llm_failure_falls_back_without_losing_recommendations(self):
@@ -236,6 +236,13 @@ class FrameRecommenderTests(unittest.TestCase):
         self.assertEqual(actual["recommendations"], expected)
         self.assertEqual(actual["llm_status"], "fallback")
         self.assertTrue(actual["answer"])
+        self.assertIn("어떤", actual["summary"])
+
+    def test_single_candidate_fallback_does_not_offer_multiple_choices(self):
+        result = self.recommender().recommend("자동차", top_k=1, use_llm=False)
+        self.assertEqual(len(result["recommendations"]), 1)
+        self.assertNotIn("여러", result["summary"])
+        self.assertIn("확인", result["summary"])
 
     def test_llm_cannot_inject_arbitrary_time_or_rewrite_candidates(self):
         llm = Mock()

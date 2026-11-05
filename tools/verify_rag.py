@@ -59,6 +59,7 @@ def main():
                 response = recommend_frames(question, top_k=5, base_url=base_url, api_key=key)
                 assert response["status"] == "success" and response["llm_status"] == "generated"
                 assert response["recommendations"]
+                assert response["summary"].endswith("?")
                 identities = set()
                 for row in response["recommendations"]:
                     source = by_id[row["item_id"]]
@@ -72,8 +73,14 @@ def main():
                 assert response["recommendations"] == deterministic["recommendations"]
                 report["responses"].append(response)
             checks.append({"input": "two Korean questions / real SigLIP2 + Qwen3 HTTP calls",
-                           "expected": "generated Korean intro; ranked distinct frame/time entries match items; LLM-off parity",
+                           "expected": "generated Korean selection question; ranked distinct frame/time entries match items; LLM-off parity",
                            "actual": "matched", "result": "PASS"})
+            single = recommend_frames("자동차", top_k=1, base_url=base_url, api_key=key)
+            assert single["llm_status"] == "generated" and len(single["recommendations"]) == 1
+            assert "여러" not in single["summary"] and single["summary"].endswith("?")
+            report["responses"].append(single)
+            checks.append({"input": "top_k=1", "expected": "generated confirmation question for one candidate",
+                           "actual": single["summary"], "result": "PASS"})
             empty = recommend_frames("자동차", video_ids=[], base_url=base_url, api_key=key)
             assert empty["recommendations"] == [] and empty["llm_status"] == "skipped_empty"
             checks.append({"input": "video_ids=[]", "expected": "success and []", "actual": empty, "result": "PASS"})
@@ -129,7 +136,8 @@ def main():
             report["source_hashes"] = {str(path): file_sha256(path) for path in sorted(Path("rag").glob("*.py"))}
             report["limitations"] = ["Synthetic image index; no real CCTV retrieval evaluation",
                                       "Loopback HTTP tested; D's separate PC/LAN connection not tested",
-                                      "LLM selects a safe intro; recommendations and timestamps come from code"]
+                                      "LLM generates a short selection question; recommendations and timestamps come from code",
+                                      "Generated wording is prompt-guided; format validation does not prove factual accuracy"]
             write_json(output / "verification_report.json", report)
             print(f"PASS: {len(checks)} live checks; report={output / 'verification_report.json'}")
         finally:

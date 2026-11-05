@@ -1,0 +1,249 @@
+{
+  "checked_at": "2026-11-05T21:57:12.899789+09:00",
+  "checker": "Codex",
+  "python": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+  "os": "Windows-11-10.0.26200-SP0",
+  "model": {
+    "id": "unsloth/Qwen3.5-4B-GGUF",
+    "revision": "e87f176479d0855a907a41277aca2f8ee7a09523",
+    "filename": "Qwen3.5-4B-Q4_K_M.gguf",
+    "url": "https://huggingface.co/unsloth/Qwen3.5-4B-GGUF/resolve/e87f176479d0855a907a41277aca2f8ee7a09523/Qwen3.5-4B-Q4_K_M.gguf",
+    "sha256": "00fe7986ff5f6b463e62455821146049db6f9313603938a70800d1fb69ef11a4",
+    "bytes": 2740937888
+  },
+  "runtime": {
+    "tag": "b12125",
+    "filename": "llama-b12125-bin-win-cpu-x64.zip",
+    "url": "https://github.com/ggml-org/llama.cpp/releases/download/b12125/llama-b12125-bin-win-cpu-x64.zip",
+    "sha256": "968091ccb8c230e0cf7e0eed386310703bebae4a4fd4375f0c57db53958307d8",
+    "bytes": 24730921
+  },
+  "embedding": {
+    "backend": "siglip2",
+    "model_id": "google/siglip2-base-patch16-224",
+    "model_revision": "75de2d55ec2d0b4efc50b3e9ad70dba96a7b2fa2",
+    "weights_sha256": "612923381c76ec5a9bed335d1c48827e3f2e506ac31b044b63b2031fadee6a0b",
+    "embedding_dim": 768,
+    "preprocess_hash": "73f3d44f6cfdd17364bddb971a3beb4e02cf1d86686748c3cdfdd7364ac98ee9",
+    "dtype": "float32",
+    "normalization": "l2",
+    "compute_dtype": "torch.float16",
+    "torch_version": "2.7.1+cu118",
+    "device": "cuda",
+    "text_max_length": 64,
+    "text_rules": {
+      "lowercase": true,
+      "padding": "max_length",
+      "max_length": 64,
+      "overflow": "reject"
+    },
+    "processor_file_hashes": {
+      "config.json": "fe8b5fe6d5734360678fd71c11c21e1ea3364bd8598d34295d9206335973ffd7",
+      "preprocessor_config.json": "9b36b57ebaf20f09bf4c22100ccc21877ea6bfe5aead0c00c59f8af8ccefacfc",
+      "special_tokens_map.json": "baec30ea10906f16adb8c18af7a34023002c1746542612b8b41c9f09e1351351",
+      "tokenizer.json": "cb9140fae3ac5122c972d37adf83e1248471a38147ad76f8215c8872c6fd8322",
+      "tokenizer_config.json": "14afe629fe4959b9e0d51e1852b8d9f7ad074f90a1a7125a4fcdd17f06e78fc8"
+    },
+    "encoder_code_sha256": "a6358b56f9637a15d38ac2ca2c93f77fa67ced7114b873000cbc79cc6c071ce1"
+  },
+  "checks": [
+    {
+      "input": "two Korean questions / real SigLIP2 + Qwen3 HTTP calls",
+      "expected": "generated Korean selection question; ranked distinct frame/time entries match items; LLM-off parity",
+      "actual": "matched",
+      "result": "PASS"
+    },
+    {
+      "input": "top_k=1",
+      "expected": "generated confirmation question for one candidate",
+      "actual": "자동차에 대한 검색 결과가 하나 나왔습니다. 확인하시겠습니까?",
+      "result": "PASS"
+    },
+    {
+      "input": "video_ids=[]",
+      "expected": "success and []",
+      "actual": {
+        "status": "success",
+        "question": "자동차",
+        "summary": "검색 가능한 프레임 후보가 없습니다.",
+        "answer": "검색 가능한 프레임 후보가 없습니다.",
+        "recommendations": [],
+        "llm_status": "skipped_empty",
+        "retrieval": "frame_cosine_max_per_frame",
+        "score_type": "cosine",
+        "index_sha256": "c28f9c53b80522b72432654506b52b1bf342fdeb98166e92e6add02e8b41da36",
+        "latency_ms": 0.018700025975704193
+      },
+      "result": "PASS"
+    },
+    {
+      "input": "UNAUTHORIZED",
+      "expected": "UNAUTHORIZED",
+      "actual": "UNAUTHORIZED",
+      "result": "PASS"
+    },
+    {
+      "input": "UNKNOWN_VIDEO",
+      "expected": "UNKNOWN_VIDEO",
+      "actual": "UNKNOWN_VIDEO",
+      "result": "PASS"
+    },
+    {
+      "input": "TEXT_TOO_LONG",
+      "expected": "TEXT_TOO_LONG",
+      "actual": "TEXT_TOO_LONG",
+      "result": "PASS"
+    },
+    {
+      "input": "LLM timeout",
+      "expected": "recommendations preserved / fallback intro",
+      "actual": "matched",
+      "result": "PASS"
+    },
+    {
+      "input": "question contains an instruction to invent 999 seconds",
+      "expected": "safe intro and only indexed entries",
+      "actual": "matched",
+      "result": "PASS"
+    },
+    {
+      "input": "D client imported as one file under python -I -S without site packages",
+      "expected": "successful HTTP recommendation",
+      "actual": {
+        "status": "success",
+        "count": 2
+      },
+      "result": "PASS"
+    }
+  ],
+  "responses": [
+    {
+      "status": "success",
+      "question": "빨간 자동차",
+      "summary": "빨간 자동차에 대한 검색 결과가 두 가지로 나왔어요. 어떤 후보를 확인하시겠어요?",
+      "answer": "빨간 자동차에 대한 검색 결과가 두 가지로 나왔어요. 어떤 후보를 확인하시겠어요?\n1. 영상 fixture01, 프레임 0 (0부터 시작), 0.000초, 유사도 0.1317\n2. 영상 fixture01, 프레임 1 (0부터 시작), 0.200초, 유사도 0.0783",
+      "recommendations": [
+        {
+          "rank": 1,
+          "item_id": "fixture-scene-0",
+          "video_id": "fixture01",
+          "frame_index": 0,
+          "timestamp_ms": 0,
+          "seconds": 0.0,
+          "source_offset_ms": 0,
+          "playback_time_ms": 0,
+          "score": 0.13172760605812073,
+          "representation": "scene",
+          "bbox": null
+        },
+        {
+          "rank": 2,
+          "item_id": "fixture-scene-200",
+          "video_id": "fixture01",
+          "frame_index": 1,
+          "timestamp_ms": 200,
+          "seconds": 0.2,
+          "source_offset_ms": 0,
+          "playback_time_ms": 200,
+          "score": 0.07828301936388016,
+          "representation": "scene",
+          "bbox": null
+        }
+      ],
+      "llm_status": "generated",
+      "retrieval": "frame_cosine_max_per_frame",
+      "score_type": "cosine",
+      "index_sha256": "c28f9c53b80522b72432654506b52b1bf342fdeb98166e92e6add02e8b41da36",
+      "latency_ms": 10989.65679993853
+    },
+    {
+      "status": "success",
+      "question": "파란 자동차",
+      "summary": "파란 자동차에 대한 검색 결과가 두 가지로 나왔어요. 어떤 후보를 확인하시겠어요?",
+      "answer": "파란 자동차에 대한 검색 결과가 두 가지로 나왔어요. 어떤 후보를 확인하시겠어요?\n1. 영상 fixture01, 프레임 1 (0부터 시작), 0.200초, 유사도 0.1277\n2. 영상 fixture01, 프레임 0 (0부터 시작), 0.000초, 유사도 0.0715",
+      "recommendations": [
+        {
+          "rank": 1,
+          "item_id": "fixture-scene-200",
+          "video_id": "fixture01",
+          "frame_index": 1,
+          "timestamp_ms": 200,
+          "seconds": 0.2,
+          "source_offset_ms": 0,
+          "playback_time_ms": 200,
+          "score": 0.12768477201461792,
+          "representation": "scene",
+          "bbox": null
+        },
+        {
+          "rank": 2,
+          "item_id": "fixture-scene-0",
+          "video_id": "fixture01",
+          "frame_index": 0,
+          "timestamp_ms": 0,
+          "seconds": 0.0,
+          "source_offset_ms": 0,
+          "playback_time_ms": 0,
+          "score": 0.0714845284819603,
+          "representation": "scene",
+          "bbox": null
+        }
+      ],
+      "llm_status": "generated",
+      "retrieval": "frame_cosine_max_per_frame",
+      "score_type": "cosine",
+      "index_sha256": "c28f9c53b80522b72432654506b52b1bf342fdeb98166e92e6add02e8b41da36",
+      "latency_ms": 5034.52349989675
+    },
+    {
+      "status": "success",
+      "question": "자동차",
+      "summary": "자동차에 대한 검색 결과가 하나 나왔습니다. 확인하시겠습니까?",
+      "answer": "자동차에 대한 검색 결과가 하나 나왔습니다. 확인하시겠습니까?\n1. 영상 fixture01, 프레임 0 (0부터 시작), 0.000초, 유사도 0.0933",
+      "recommendations": [
+        {
+          "rank": 1,
+          "item_id": "fixture-scene-0",
+          "video_id": "fixture01",
+          "frame_index": 0,
+          "timestamp_ms": 0,
+          "seconds": 0.0,
+          "source_offset_ms": 0,
+          "playback_time_ms": 0,
+          "score": 0.09327217936515808,
+          "representation": "scene",
+          "bbox": null
+        }
+      ],
+      "llm_status": "generated",
+      "retrieval": "frame_cosine_max_per_frame",
+      "score_type": "cosine",
+      "index_sha256": "c28f9c53b80522b72432654506b52b1bf342fdeb98166e92e6add02e8b41da36",
+      "latency_ms": 3300.7809999398887
+    }
+  ],
+  "llm_peak_working_set_bytes": 4545437696,
+  "index_sha256": "c28f9c53b80522b72432654506b52b1bf342fdeb98166e92e6add02e8b41da36",
+  "model_context": 2048,
+  "max_output_tokens": 128,
+  "llm_device": "cpu",
+  "embedding_gpu_peak_allocated_bytes": 776561664,
+  "elapsed_ms": 80426.88090004958,
+  "source_hashes": {
+    "rag\\__init__.py": "9b6a93fc42ad4f46e9a99ddece2d87b17c642c70b1602f584b83aeebd8aaeabf",
+    "rag\\__main__.py": "632ced765157cd7c36e993d999cdfd3190b03515cf32c7ce5b12f9893d0be162",
+    "rag\\assets.py": "3b436a6d1ca552d6bc29dd762f94efec888c1c2d4394afabc4e96ddf163955b0",
+    "rag\\client.py": "db53b331e245e27a5560f1c19dce70727fe66e991cbf7fc10e29e68a6531f1a6",
+    "rag\\engine.py": "97f6e2dd8dc23492b3545eb9d6d44064ae562cce8081ad8dc1058c387ac65400",
+    "rag\\errors.py": "52efeb0349fbd03befb4e25ce0534ff3a4d6805f289cf8a721bb5ec3447d8698",
+    "rag\\http_server.py": "4c0f4efe2a0dbe77418071fc659ae08057f8ec08212f7c752d2a3418fbaa35bd",
+    "rag\\prompts.py": "7d0368778ab442f0942460bf6078ab526fd1a932dd1ce0b484a577bc69f9b294",
+    "rag\\runtime.py": "be27f533a40f7f1a9f9c392b7c66630be918407434b459f012457d0a3d60c51f"
+  },
+  "limitations": [
+    "Synthetic image index; no real CCTV retrieval evaluation",
+    "Loopback HTTP tested; D's separate PC/LAN connection not tested",
+    "LLM generates a short selection question; recommendations and timestamps come from code",
+    "Generated wording is prompt-guided; format validation does not prove factual accuracy"
+  ]
+}

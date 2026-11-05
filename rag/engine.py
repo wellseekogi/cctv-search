@@ -8,7 +8,7 @@ from embedding.contracts import check_vectors, file_sha256, read_jsonl
 from embedding.pipeline import validate_index
 
 from .errors import RagError
-from .prompts import SAFE_SUMMARIES
+from .prompts import fallback_summary, validate_summary
 
 
 class FrameRecommender:
@@ -87,12 +87,12 @@ class FrameRecommender:
         if not recommendations:
             summary, llm_status = "검색 가능한 프레임 후보가 없습니다.", "skipped_empty"
         else:
-            summary, llm_status = SAFE_SUMMARIES[0], "disabled" if not use_llm else "fallback"
+            summary = fallback_summary(len(recommendations))
+            llm_status = "disabled" if not use_llm else "fallback"
             if use_llm and self.llm is not None:
                 try:
-                    generated = self.llm.summarize(question, len(recommendations))
-                    if generated in SAFE_SUMMARIES:
-                        summary, llm_status = generated, "generated"
+                    summary = validate_summary(self.llm.summarize(question, len(recommendations)))
+                    llm_status = "generated"
                 except Exception:
                     # Frame recommendations remain usable when the optional narrator fails.
                     pass
