@@ -12,3 +12,5 @@ source_hashes.json
 .env.*
 *.safetensors
 *.pt
+*.gguf
+*.local.json

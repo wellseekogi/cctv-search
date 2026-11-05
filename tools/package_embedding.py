@@ -24,9 +24,11 @@ def main():
         path = (root / run).resolve()
         if not path.is_relative_to(root / "runs") or not path.is_dir():
             raise ValueError("Select an existing directory within runs/")
-    for folder in ["embedding", "configs", "fixtures", "tests", "tools", "docs", *args.run]:
+    for folder in ["embedding", "rag", "configs", "fixtures", "tests", "tools", "docs", *args.run]:
         selected.extend(p for p in (root / folder).rglob("*") if p.is_file()
-                        and "__pycache__" not in p.parts and "cache" not in p.parts)
+                        and "__pycache__" not in p.parts and "cache" not in p.parts
+                        and not p.name.endswith(".local.json") and not p.name.startswith(".env")
+                        and p.name != "local.yaml")
     hashes = {p.relative_to(root).as_posix(): file_sha256(p) for p in sorted(selected)}
     manifest = root / "source_hashes.json"
     write_json(manifest, {"files": hashes})
