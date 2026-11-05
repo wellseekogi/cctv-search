@@ -42,6 +42,9 @@ test_truncated_and_oversized_download_rejected (test_rag_assets.AssetTests.test_
 test_unsafe_zip_paths_rejected_before_extracting (test_rag_assets.AssetTests.test_unsafe_zip_paths_rejected_before_extracting) ... ok
 test_url_size_hash_and_filename_inputs_checked_before_network (test_rag_assets.AssetTests.test_url_size_hash_and_filename_inputs_checked_before_network) ... ok
 test_zip_symlink_rejected (test_rag_assets.AssetTests.test_zip_symlink_rejected) ... ok
+test_invalid_environment_key_is_rejected (test_rag_cli.LocalKeyTests.test_invalid_environment_key_is_rejected) ... ok
+test_local_exclusion_is_persistent_and_idempotent (test_rag_cli.LocalKeyTests.test_local_exclusion_is_persistent_and_idempotent) ... ok
+test_zip_install_without_git_does_not_require_repository (test_rag_cli.LocalKeyTests.test_zip_install_without_git_does_not_require_repository) ... ok
 test_64_tokens_are_accepted (test_rag_engine.FrameRecommenderTests.test_64_tokens_are_accepted) ... ok
 test_65_tokens_are_rejected_before_encoding (test_rag_engine.FrameRecommenderTests.test_65_tokens_are_rejected_before_encoding) ... ok
 test_blank_nonstring_and_overlong_questions_are_rejected (test_rag_engine.FrameRecommenderTests.test_blank_nonstring_and_overlong_questions_are_rejected) ... ok
@@ -97,6 +100,6 @@ test_blank_or_nonstring_queries_rejected (test_siglip2.Siglip2QueryTests.test_bl
 test_empty_queries_keep_model_dimension (test_siglip2.Siglip2QueryTests.test_empty_queries_keep_model_dimension) ... ok
 
 ----------------------------------------------------------------------
-Ran 97 tests in 17.201s
+Ran 100 tests in 16.269s
 
 OK

@@ -3,8 +3,24 @@ import ipaddress
 import json
 import os
 import secrets
+import subprocess
 import sys
 from pathlib import Path
+
+
+def protect_local_configs():
+    try:
+        result = subprocess.run(["git", "rev-parse", "--git-path", "info/exclude"],
+                                capture_output=True, text=True, check=False)
+    except OSError:
+        return
+    if result.returncode == 0:
+        path = Path(result.stdout.strip())
+        text = path.read_text(encoding="utf-8") if path.exists() else ""
+        if "*.local.json" not in text.splitlines():
+            path.parent.mkdir(parents=True, exist_ok=True)
+            # Local excludes persist when switching to older experiment branches.
+            path.write_text(text.rstrip() + "\n*.local.json\n", encoding="utf-8")
 
 
 def read_key(path):
@@ -51,6 +67,7 @@ def main():
             path = Path(args.output)
             if not path.name.endswith(".local.json"):
                 raise ValueError("Use a .local.json filename excluded from Git and source packages")
+            protect_local_configs()
             path.parent.mkdir(parents=True, exist_ok=True)
             with path.open("x", encoding="utf-8") as stream:
                 json.dump({"api_key": secrets.token_urlsafe(32)}, stream)
