@@ -1,0 +1,83 @@
+{
+  "schema_version": "cctv-3.0",
+  "status": "success",
+  "gallery_id": "gallery_dev",
+  "index_version": "idx_d_small_v1",
+  "queries_file": "fixtures/d_small/queries.jsonl",
+  "representations": [
+    "scene",
+    "object",
+    "combined"
+  ],
+  "queries": 4,
+  "queries_skipped": 0,
+  "rows": 56,
+  "retrieval": {
+    "fusion": "rrf",
+    "rrf_k": 60,
+    "scene_link_tolerance_ms": 100,
+    "playback_context_ms": 1000
+  },
+  "per_query": [
+    {
+      "query_id": "q001",
+      "representation": "scene",
+      "tracks": 5
+    },
+    {
+      "query_id": "q001",
+      "representation": "object",
+      "tracks": 4
+    },
+    {
+      "query_id": "q001",
+      "representation": "combined",
+      "tracks": 5
+    },
+    {
+      "query_id": "q002",
+      "representation": "scene",
+      "tracks": 5
+    },
+    {
+      "query_id": "q002",
+      "representation": "object",
+      "tracks": 4
+    },
+    {
+      "query_id": "q002",
+      "representation": "combined",
+      "tracks": 5
+    },
+    {
+      "query_id": "q003",
+      "representation": "scene",
+      "tracks": 5
+    },
+    {
+      "query_id": "q003",
+      "representation": "object",
+      "tracks": 4
+    },
+    {
+      "query_id": "q003",
+      "representation": "combined",
+      "tracks": 5
+    },
+    {
+      "query_id": "q004",
+      "representation": "scene",
+      "tracks": 5
+    },
+    {
+      "query_id": "q004",
+      "representation": "object",
+      "tracks": 4
+    },
+    {
+      "query_id": "q004",
+      "representation": "combined",
+      "tracks": 5
+    }
+  ]
+}

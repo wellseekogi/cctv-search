@@ -1,0 +1,22 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/search",
+    "json": {
+      "modality": "text",
+      "text": "a white car",
+      "top_k": 10,
+      "gallery_id": "gallery_dev",
+      "representation": "combined"
+    }
+  },
+  "status": 503,
+  "response": {
+    "schema_version": "cctv-3.0",
+    "request_id": "req_5e2bce5c12544f01",
+    "error": {
+      "code": "INDEX_NOT_READY",
+      "message": "인덱스가 준비되지 않았습니다. GET /health 를 확인하세요"
+    }
+  }
+}

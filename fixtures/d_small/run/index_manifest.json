@@ -1,0 +1,23 @@
+{
+  "schema_version": "cctv-3.0",
+  "index_version": "idx_d_small_v1",
+  "files": {
+    "items.jsonl": {
+      "sha256": "d6671ab04949d9dccd601eaada6451bde8c156f4d44ffb6273d5a2996ad577c7",
+      "rows": 10
+    },
+    "vectors.npy": {
+      "sha256": "4c5c130347e71e729aa7684d762fdf382836591d1db92a4f5a19297592e47377",
+      "rows": 10
+    }
+  },
+  "embedding_dim": 4,
+  "dtype": "float32",
+  "normalized": true,
+  "model_id": "fixture-encoder",
+  "model_revision": "fixture",
+  "preprocess_hash": "fixture",
+  "split": "dev",
+  "track_source": "pred",
+  "track_source_id": "det01"
+}

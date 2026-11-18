@@ -1,0 +1,37 @@
+{
+  "request": {
+    "method": "GET",
+    "path": "/health"
+  },
+  "status": 200,
+  "response": {
+    "schema_version": "cctv-3.0",
+    "request_id": "req_c990496dac7d4e0a",
+    "status": "not_ready",
+    "model_ready": true,
+    "index_ready": false,
+    "model": {
+      "model_id": "fixture-encoder",
+      "model_revision": "fixture",
+      "preprocess_hash": "fixture",
+      "embedding_dim": 4,
+      "problem": null
+    },
+    "galleries": [
+      {
+        "gallery_id": "gallery_dev",
+        "index_ready": false,
+        "index_version": null,
+        "items": 0,
+        "embedding_dim": null,
+        "videos": 0,
+        "tracks": 0,
+        "observations": null,
+        "problems": [
+          "읽기 실패: This file contains pickled (object) data. If you trust the file you can load it unsafely using the `allow_pickle=` keyword argument or `pickle.load()`."
+        ],
+        "warnings": []
+      }
+    ]
+  }
+}

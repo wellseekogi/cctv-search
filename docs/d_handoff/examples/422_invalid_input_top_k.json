@@ -1,0 +1,22 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/search",
+    "json": {
+      "modality": "text",
+      "text": "a white car",
+      "top_k": 0,
+      "gallery_id": "gallery_dev",
+      "representation": "combined"
+    }
+  },
+  "status": 422,
+  "response": {
+    "schema_version": "cctv-3.0",
+    "request_id": "req_618c6fcb89a944f3",
+    "error": {
+      "code": "INVALID_INPUT",
+      "message": "top_k 는 1~50 범위여야 합니다"
+    }
+  }
+}

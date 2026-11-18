@@ -1,0 +1,19 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/search/image",
+    "form": {
+      "gallery_id": "gallery_dev"
+    },
+    "image_bytes": 12
+  },
+  "status": 415,
+  "response": {
+    "schema_version": "cctv-3.0",
+    "request_id": "req_2b3825fa7da946c4",
+    "error": {
+      "code": "INVALID_IMAGE",
+      "message": "이미지를 읽을 수 없습니다. JPEG 또는 PNG 파일을 사용하세요"
+    }
+  }
+}

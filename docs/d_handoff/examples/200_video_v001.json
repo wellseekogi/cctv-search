@@ -1,0 +1,25 @@
+{
+  "request": {
+    "method": "GET",
+    "path": "/videos/v001"
+  },
+  "status": 200,
+  "response": {
+    "schema_version": "cctv-3.0",
+    "request_id": "req_18b4c33f326042f4",
+    "video_id": "v001",
+    "gallery_id": "gallery_dev",
+    "width": 1920,
+    "height": 1080,
+    "duration_ms": 3200,
+    "fps": 5,
+    "source_offset_ms": 0,
+    "available_start_ms": 0,
+    "available_end_ms": 3200,
+    "media_id": "v_db9a50138886",
+    "video_url": "/media/v_db9a50138886",
+    "reencoded": false,
+    "codec": null,
+    "file_sha256": "588329198f5ca49cdc57cfc77f28b6b579ac69525473802b7e1ecb0f2d0a4414"
+  }
+}

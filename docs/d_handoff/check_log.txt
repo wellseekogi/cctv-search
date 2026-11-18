@@ -1,0 +1,126 @@
+# D 검사 로그 (작은 예제 fixtures/d_small 기준)
+# 실행일: 2026-11-18, Python 3.13.18
+
+## 1. 자동 검사: python -m pytest tests -v
+tests/test_api.py::test_health_ready PASSED
+tests/test_api.py::test_text_search_response_fields PASSED
+tests/test_api.py::test_top_k_limits_results_but_not_total PASSED
+tests/test_api.py::test_defaults_and_whitespace PASSED
+tests/test_api.py::test_empty_video_filter_returns_200_empty PASSED
+tests/test_api.py::test_video_filter PASSED
+tests/test_api.py::test_same_request_twice_is_identical PASSED
+tests/test_api.py::test_invalid_input_422[patch0] PASSED
+tests/test_api.py::test_invalid_input_422[patch1] PASSED
+tests/test_api.py::test_invalid_input_422[patch2] PASSED
+tests/test_api.py::test_invalid_input_422[patch3] PASSED
+tests/test_api.py::test_invalid_input_422[patch4] PASSED
+tests/test_api.py::test_invalid_input_422[patch5] PASSED
+tests/test_api.py::test_invalid_input_422[patch6] PASSED
+tests/test_api.py::test_invalid_input_422[patch7] PASSED
+tests/test_api.py::test_invalid_input_422[patch8] PASSED
+tests/test_api.py::test_invalid_input_422[patch9] PASSED
+tests/test_api.py::test_invalid_input_422[patch10] PASSED
+tests/test_api.py::test_invalid_input_422[patch11] PASSED
+tests/test_api.py::test_invalid_input_422[patch12] PASSED
+tests/test_api.py::test_invalid_json_and_content_type PASSED
+tests/test_api.py::test_text_length_boundary PASSED
+tests/test_api.py::test_token_length_checked PASSED
+tests/test_api.py::test_unknown_gallery_and_video PASSED
+tests/test_api.py::test_image_search_png_and_jpeg PASSED
+tests/test_api.py::test_image_video_ids_json_string PASSED
+tests/test_api.py::test_image_form_errors PASSED
+tests/test_api.py::test_image_too_many_bytes_413 PASSED
+tests/test_api.py::test_image_too_many_pixels_413 PASSED
+tests/test_api.py::test_image_min_side_415 PASSED
+tests/test_api.py::test_image_bad_format_415 PASSED
+tests/test_api.py::test_exif_rotation_applied PASSED
+tests/test_api.py::test_video_info PASSED
+tests/test_api.py::test_media_full_and_range PASSED
+tests/test_api.py::test_index_not_ready_503 PASSED
+tests/test_api.py::test_internal_error_500 PASSED
+tests/test_api.py::test_request_log_links_request_id PASSED
+tests/test_index.py::test_fixture_index_loads PASSED
+tests/test_index.py::test_tampered_vectors_detected_by_hash PASSED
+tests/test_index.py::test_unnormalized_vectors_rejected PASSED
+tests/test_index.py::test_row_count_mismatch_rejected PASSED
+tests/test_index.py::test_missing_file_rejected PASSED
+tests/test_index.py::test_encoder_model_mismatch_marks_not_ready PASSED
+tests/test_index.py::test_empty_index_is_valid PASSED
+tests/test_index.py::test_config_rejects_multiple_workers PASSED
+tests/test_predictions.py::test_predictions_full_ranking PASSED
+tests/test_predictions.py::test_predictions_reproducible PASSED
+tests/test_predictions.py::test_predictions_all_representations PASSED
+tests/test_predictions.py::test_exit_codes PASSED
+tests/test_ranking.py::test_dot_scores_hand_calculated PASSED
+tests/test_ranking.py::test_object_ranking_duplicate_track_and_tie PASSED
+tests/test_ranking.py::test_scene_ranking_links_and_tie PASSED
+tests/test_ranking.py::test_combined_rrf_hand_calculated PASSED
+tests/test_ranking.py::test_representative_item_and_playback_window PASSED
+tests/test_ranking.py::test_video_filter_applied_before_ranking PASSED
+tests/test_ranking.py::test_empty_filter_returns_no_candidates PASSED
+tests/test_ranking.py::test_same_input_same_output PASSED
+tests/test_ranking.py::test_scene_link_tolerance_boundary PASSED
+tests/test_ranking.py::test_rank_tracks_missing_terms_and_tie_order PASSED
+tests/test_ranking.py::test_playback_window[1200-0-3200-expected0] PASSED
+tests/test_ranking.py::test_playback_window[400-0-3200-expected1] PASSED
+tests/test_ranking.py::test_playback_window[3000-0-3200-expected2] PASSED
+tests/test_ranking.py::test_playback_window[1500-1000-2000-expected3] PASSED
+tests/test_ranking.py::test_playback_window[500-1000-2000-expected4] PASSED
+tests/test_ranking.py::test_playback_window[100-2000-3000-expected5] PASSED
+tests/test_tracks.py::test_team_sample_row_is_accepted PASSED
+tests/test_tracks.py::test_team_sample_score_matches_quality_formula PASSED
+tests/test_tracks.py::test_quality_formula[0.0154321-100.0-False-0.404321] PASSED
+tests/test_tracks.py::test_quality_formula[0.0154321-900.0-False-0.604321] PASSED
+tests/test_tracks.py::test_quality_formula[0.0154321-100.0-True-0.3234568] PASSED
+tests/test_tracks.py::test_quality_formula[0.2-0.0-False-0.5] PASSED
+tests/test_tracks.py::test_invalid_rows_are_problems[patch0-track_uid \uac00] PASSED
+tests/test_tracks.py::test_invalid_rows_are_problems[patch1-x1<x2] PASSED
+tests/test_tracks.py::test_invalid_rows_are_problems[patch2-\uc22b\uc790 4\uac1c] PASSED
+tests/test_tracks.py::test_invalid_rows_are_problems[patch3-timestamp_ms] PASSED
+tests/test_tracks.py::test_invalid_rows_are_problems[patch4-source] PASSED
+tests/test_tracks.py::test_invalid_rows_are_problems[patch5-schema_version] PASSED
+tests/test_tracks.py::test_invalid_rows_are_problems[patch6-confidence] PASSED
+tests/test_tracks.py::test_invalid_rows_are_problems[patch7-quality.score] PASSED
+tests/test_tracks.py::test_duplicate_observation_is_problem PASSED
+tests/test_tracks.py::test_missing_file_is_problem PASSED
+tests/test_tracks.py::test_source_must_match_index PASSED
+tests/test_tracks.py::test_mixed_pred_and_gt_is_problem PASSED
+tests/test_tracks.py::test_score_mismatch_is_warning PASSED
+tests/test_tracks.py::test_missing_score_is_recomputed PASSED
+tests/test_tracks.py::test_area_ratio_mismatch_and_out_of_frame_are_warnings PASSED
+tests/test_tracks.py::test_unsorted_rows_are_sorted_with_warning PASSED
+tests/test_tracks.py::test_gt_rows_allow_null_confidence PASSED
+tests/test_tracks.py::test_other_video_rows_are_skipped PASSED
+tests/test_tracks.py::test_items_track_missing_from_tracks_marks_not_ready PASSED
+tests/test_tracks.py::test_missing_tracks_file_marks_not_ready PASSED
+tests/test_tracks.py::test_results_carry_observation_fields PASSED
+tests/test_tracks.py::test_health_shows_observation_summary PASSED
+============================== 93 passed in 0.97s ==============================
+
+## 2. 실제 서버 확인: python -m api --port 8011 (127.0.0.1, worker 1)
+$ GET /health (관측 요약)
+{'status': 'ok', 'model_ready': True, 'index_ready': True}
+observations: {'rows': 51, 'tracks': 5, 'videos': 2, 'sources': ['pred'], 'track_source_ids': ['det01'], 'class_names': {'car': 31, 'person': 4, 'truck': 16}, 'score_recomputed_rows': 0}
+warnings: []
+$ POST /search (a white car, combined)
+score_type, total: rrf 5
+1 det01:v001:t007 0.032522 200 1200 2200 car 0.9 0.404321
+2 det01:v001:t008 0.032002 0 600 1600 truck 0.9 0.539352
+3 det01:v002:t001 0.031778 0 400 1400 car 0.9 0.597222
+4 det01:v002:t002 0.03125 3000 4000 4800 car 0.9 0.75
+5 det01:v001:t009 0.015873 200 1200 2200 person 0.9 0.356096
+$ POST /search/image (red_patch.png, object)
+1 det01:v002:t001 0.96 car
+2 det01:v001:t007 0.8 car
+3 det01:v001:t008 0.8 truck
+$ GET /media/v_db9a50138886 (Range: bytes=0-1023)
+HTTP/1.1 206 Partial Content
+content-range: bytes 0-1023/193556
+content-length: 1024
+$ ffmpeg 로 서버 URL 의 1.2초 지점 프레임 추출
+성공
+
+## 3. 팀 관측 행 검사: fixtures/b_sample/tracks_sample.jsonl
+problems: [] warnings: []
+summary: {'rows': 1, 'tracks': 1, 'videos': 1, 'sources': ['pred'], 'track_source_ids': ['det01_b_colab_001_000'], 'class_names': {'car': 1}, 'score_recomputed_rows': 0}
+observation: Observation(timestamp_ms=0, bbox=[1325.21435546875, 370.3994140625, 1668.09130859375, 504.34686279296875], frame_index=0, class_name='car', confidence=0.8827624320983887, quality_score=0.7109654215527837)

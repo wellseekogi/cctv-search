@@ -1,0 +1,19 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/search/image",
+    "form": {
+      "gallery_id": "gallery_dev"
+    },
+    "image_bytes": 56249
+  },
+  "status": 413,
+  "response": {
+    "schema_version": "cctv-3.0",
+    "request_id": "req_e520cd9f138045f0",
+    "error": {
+      "code": "IMAGE_TOO_LARGE",
+      "message": "이미지는 16,000,000 픽셀 이하여야 합니다 (현재 4001x4000)"
+    }
+  }
+}

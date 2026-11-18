@@ -1,0 +1,51 @@
+{
+  "request": {
+    "method": "GET",
+    "path": "/health"
+  },
+  "status": 200,
+  "response": {
+    "schema_version": "cctv-3.0",
+    "request_id": "req_65f8c2ef07eb43cb",
+    "status": "ok",
+    "model_ready": true,
+    "index_ready": true,
+    "model": {
+      "model_id": "fixture-encoder",
+      "model_revision": "fixture",
+      "preprocess_hash": "fixture",
+      "embedding_dim": 4,
+      "problem": null
+    },
+    "galleries": [
+      {
+        "gallery_id": "gallery_dev",
+        "index_ready": true,
+        "index_version": "idx_d_small_v1",
+        "items": 10,
+        "embedding_dim": 4,
+        "videos": 2,
+        "tracks": 5,
+        "observations": {
+          "rows": 51,
+          "tracks": 5,
+          "videos": 2,
+          "sources": [
+            "pred"
+          ],
+          "track_source_ids": [
+            "det01"
+          ],
+          "class_names": {
+            "car": 31,
+            "person": 4,
+            "truck": 16
+          },
+          "score_recomputed_rows": 0
+        },
+        "problems": [],
+        "warnings": []
+      }
+    ]
+  }
+}

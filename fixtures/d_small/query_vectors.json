@@ -1,0 +1,25 @@
+{
+  "model_id": "fixture-encoder",
+  "preprocess_hash": "fixture",
+  "embedding_dim": 4,
+  "texts": {
+    "a white car": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "a red truck": [
+      0.0,
+      1.0,
+      0.0,
+      0.0
+    ],
+    "a person walking": [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ]
+  }
+}

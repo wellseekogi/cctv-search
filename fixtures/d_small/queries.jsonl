@@ -1,0 +1,4 @@
+{"query_id": "q001", "modality": "text", "split": "dev", "language": "en", "text": "a white car", "image_path": null, "gallery_id": "gallery_dev"}
+{"query_id": "q002", "modality": "text", "split": "dev", "language": "en", "text": "a red truck", "image_path": null, "gallery_id": "gallery_dev"}
+{"query_id": "q003", "modality": "text", "split": "dev", "language": "en", "text": "a person walking", "image_path": null, "gallery_id": "gallery_dev"}
+{"query_id": "q004", "modality": "image", "split": "dev", "language": null, "text": null, "image_path": "queries/red_patch.png", "gallery_id": "gallery_dev"}

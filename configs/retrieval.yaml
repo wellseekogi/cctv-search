@@ -1,0 +1,37 @@
+# D 담당 설정 (안내서 D 4). 값 변경 시 docs/decisions.md 에 기록하고 G에게 알립니다.
+retrieval:
+  fusion: rrf
+  rrf_k: 60
+  scene_link_tolerance_ms: 100   # F와 확인해 고정 (공통 후보 시각 허용차)
+  playback_context_ms: 1000
+
+api:
+  host: 127.0.0.1
+  port: 8000
+  workers: 1
+  top_k_default: 10
+  top_k_max: 50
+  text_max_chars: 500
+  image_max_bytes: 5000000
+  image_max_pixels: 16000000
+  image_min_side_px: 32
+  log_path: logs/api.jsonl
+
+# 질의 인코더. C의 인코더를 받으면 아래 두 줄을 교체합니다.
+#   factory: retrieval.encoder:FunctionEncoder
+#   options: {module: embedding.encoder}
+encoder:
+  factory: retrieval.encoder:FixtureEncoder
+  options:
+    table: fixtures/d_small/query_vectors.json
+
+# gallery_id -> 인덱스 묶음(run 폴더)·영상 목록·관측 파일
+galleries:
+  gallery_dev:
+    run_dir: fixtures/d_small/run          # items.jsonl · vectors.npy · index_manifest.json · media/
+    data_root: fixtures/d_small/data       # manifest.relative_path 의 기준
+    manifest: fixtures/d_small/manifest.jsonl
+    tracks: fixtures/d_small/run/tracks.jsonl   # GT 실험이면 GT 관측, 실제 검출 실험이면 pred 관측
+    # split: dev                            # 지정하면 manifest 의 해당 분할 영상만 gallery 로 사용
+    # playback_overrides:                   # 재인코딩한 재생용 파일 등록
+    #   v001: {path: playback/v001_h264.mp4, source_offset_ms: 0, codec: h264, sha256: "<파일 해시>"}

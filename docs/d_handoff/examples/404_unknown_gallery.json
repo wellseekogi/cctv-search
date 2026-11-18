@@ -1,0 +1,22 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/search",
+    "json": {
+      "modality": "text",
+      "text": "a white car",
+      "top_k": 10,
+      "gallery_id": "nope",
+      "representation": "combined"
+    }
+  },
+  "status": 404,
+  "response": {
+    "schema_version": "cctv-3.0",
+    "request_id": "req_bacacaab9517410d",
+    "error": {
+      "code": "UNKNOWN_GALLERY",
+      "message": "등록되지 않은 gallery_id 입니다: nope"
+    }
+  }
+}

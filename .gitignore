@@ -6,3 +6,6 @@ models/
 .cache/
 runs/
 configs/local.yaml
+
+.pytest_cache/
+logs/

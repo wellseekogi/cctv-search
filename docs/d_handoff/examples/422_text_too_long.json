@@ -1,0 +1,22 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/search",
+    "json": {
+      "modality": "text",
+      "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "top_k": 10,
+      "gallery_id": "gallery_dev",
+      "representation": "combined"
+    }
+  },
+  "status": 422,
+  "response": {
+    "schema_version": "cctv-3.0",
+    "request_id": "req_a5d63cfb068445d4",
+    "error": {
+      "code": "TEXT_TOO_LONG",
+      "message": "text 는 500자 이하여야 합니다 (현재 501자)"
+    }
+  }
+}

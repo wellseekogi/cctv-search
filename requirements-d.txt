@@ -1,0 +1,9 @@
+numpy
+pyyaml
+pillow
+fastapi
+uvicorn
+python-multipart
+# 검사용
+pytest
+httpx

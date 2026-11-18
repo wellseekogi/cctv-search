@@ -1,0 +1,25 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/search",
+    "json": {
+      "modality": "text",
+      "text": "a white car",
+      "top_k": 10,
+      "gallery_id": "gallery_dev",
+      "representation": "combined",
+      "video_ids": [
+        "v999"
+      ]
+    }
+  },
+  "status": 404,
+  "response": {
+    "schema_version": "cctv-3.0",
+    "request_id": "req_450e3d6bbc7c4f15",
+    "error": {
+      "code": "UNKNOWN_VIDEO",
+      "message": "등록되지 않은 video_id 입니다: v999"
+    }
+  }
+}
